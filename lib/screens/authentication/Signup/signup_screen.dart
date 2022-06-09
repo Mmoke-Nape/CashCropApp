@@ -29,7 +29,7 @@ class SignupScreen extends StatelessWidget {
               ),
             ),
             Container(
-              // padding: const EdgeInsets.symmetric(vertical: 50),
+              padding: const EdgeInsets.only(top: 20),
               width: size.width,
               height: size.height,
               child: SingleChildScrollView(
@@ -37,10 +37,8 @@ class SignupScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 20,
-                        vertical: 20,
-                      ),
+                      // padding: const EdgeInsets.only(left: 20),
+                      margin: const EdgeInsets.symmetric(horizontal: 20),
                       width: size.width,
                       // height: size.height * .13,
                       child: Row(
@@ -64,12 +62,13 @@ class SignupScreen extends StatelessWidget {
                           ),
                           Image.asset(
                             'assets/images/logo/logo.png',
-                            height: 80,
+                            height: 70,
                           ),
                           const SizedBox(width: 50),
                         ],
                       ),
                     ),
+                    const SizedBox(height: 10),
                     Text(
                       'CashCrop',
                       style: Theme.of(context)
@@ -77,7 +76,6 @@ class SignupScreen extends StatelessWidget {
                           .headline2!
                           .copyWith(fontSize: 50),
                     ),
-                    const SizedBox(height: 10),
                     const Text(
                       'Create a new account',
                       style: TextStyle(

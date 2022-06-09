@@ -6,6 +6,7 @@ import 'package:cashcrop_app/screens/authentication/validation/validation.dart';
 import 'package:cashcrop_app/screens/authentication/widgets/signup_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:rive/rive.dart';
 
 import '../validation/OTP Form/otp_form.dart';
 import '../widgets/top_clipper.dart';
@@ -79,13 +80,13 @@ class VerifyEmailScreen extends StatelessWidget {
                         ],
                       ),
                     ),
-                    const SizedBox(height: 30),
+                    const SizedBox(height: 15),
                     Container(
                       width: size.width * .9,
-                      height: size.height * .72,
+                      height: size.height * .78,
                       padding: const EdgeInsets.symmetric(
                         horizontal: 20,
-                        vertical: 30,
+                        vertical: 20,
                       ),
                       decoration: BoxDecoration(
                         color: AppColors.lightGrey,
@@ -94,7 +95,15 @@ class VerifyEmailScreen extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          SizedBox(height: size.height * .2),
+                          SizedBox(
+                            height: size.height * .2,
+                            child: const RiveAnimation.asset(
+                              'assets/animations/lock_phone.riv',
+                              fit: BoxFit.contain,
+                              // animations: ['hover'],
+                              // placeHolder: Container(color: Colors.amber),
+                            ),
+                          ),
                           const Text(
                             'Email Verification',
                             style: TextStyle(
@@ -136,7 +145,7 @@ class VerifyEmailScreen extends StatelessWidget {
                               ],
                             ),
                           ),
-                          const SizedBox(height: 30),
+                          const SizedBox(height: 20),
                           SignupButton(
                             text: 'Verify',
                             press: () {

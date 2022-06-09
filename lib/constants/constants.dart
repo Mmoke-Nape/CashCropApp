@@ -5,6 +5,7 @@ class AppColors {
   static const secondaryLime = Color(0xffC8F347);
   static const lightGrey = Color(0xffF2F2F2);
   static const darkGrey = Color(0xffA0A0A0);
+  static const yellow = Color(0xffF4D32C);
 }
 
 final otpInputDecoration = InputDecoration(

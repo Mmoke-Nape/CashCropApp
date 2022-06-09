@@ -36,14 +36,14 @@ class LoginSigninScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   SizedBox(
-                    height: size.height * .13,
+                    height: size.height * .1,
                   ),
                   Image.asset('assets/images/logo/logo.png', height: 150),
                   Text(
                     'CashCrop',
                     style: Theme.of(context).textTheme.headline2,
                   ),
-                  SizedBox(height: size.height * .25),
+                  SizedBox(height: size.height * .22),
                   SignupButton(
                     text: 'Login',
                     inverted: true,

@@ -12,17 +12,17 @@ class LoginSignupForm extends StatefulWidget {
   State<LoginSignupForm> createState() => _LoginSignupFormState();
 }
 
-class _LoginSignupFormState extends State<LoginSignupForm> { 
+class _LoginSignupFormState extends State<LoginSignupForm> {
   @override
   Widget build(BuildContext context) {
     final isSignupRoute = Get.currentRoute == AppRoutes.signupRoute;
     Size size = MediaQuery.of(context).size;
     return Container(
       width: size.width * .9,
-      height: isSignupRoute ? size.height * .61 : size.height * .45,
+      height: isSignupRoute ? size.height * .62 : size.height * .43,
       padding: const EdgeInsets.symmetric(
         horizontal: 20,
-        vertical: 30,
+        vertical: 10,
       ),
       decoration: BoxDecoration(
         color: AppColors.lightGrey,
@@ -30,6 +30,7 @@ class _LoginSignupFormState extends State<LoginSignupForm> {
       ),
       child: Form(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             if (isSignupRoute)
               TextFormField(
@@ -43,7 +44,7 @@ class _LoginSignupFormState extends State<LoginSignupForm> {
                 ),
                 keyboardType: TextInputType.name,
               ),
-            if (isSignupRoute) const SizedBox(height: 20),
+            // if (isSignupRoute) const SizedBox(height: 10),
             TextFormField(
               // controller: emailController,
               decoration: InputDecoration(
@@ -55,7 +56,7 @@ class _LoginSignupFormState extends State<LoginSignupForm> {
               ),
               keyboardType: TextInputType.emailAddress,
             ),
-            const SizedBox(height: 20),
+            // const SizedBox(height: 10),
             TextFormField(
               // controller: passwordController,
               decoration: InputDecoration(
@@ -69,7 +70,7 @@ class _LoginSignupFormState extends State<LoginSignupForm> {
               keyboardType: TextInputType.visiblePassword,
               obscureText: true,
             ),
-            if (isSignupRoute) const SizedBox(height: 20),
+            // if (isSignupRoute) const SizedBox(height: 10),
             if (isSignupRoute)
               TextFormField(
                 // controller: passwordController,
@@ -84,21 +85,21 @@ class _LoginSignupFormState extends State<LoginSignupForm> {
                 keyboardType: TextInputType.visiblePassword,
                 obscureText: true,
               ),
-            const SizedBox(height: 40),
+            // const SizedBox(height: 20),
             SignupButton(
               text: isSignupRoute ? 'Signup' : 'Login',
               press: () {
                 if (isSignupRoute) Get.toNamed(AppRoutes.verifyEmailRoute);
-                if (!isSignupRoute) Get.toNamed(AppRoutes.homeScreenRoute);
+                // if (!isSignupRoute) Get.toNamed(AppRoutes.homeScreenRoute);
                 // GetUtils.isEmail(emailController.text);
               },
             ),
-            const SizedBox(height: 40),
+            // const SizedBox(height: 20),
             GestureDetector(
               onTap: () {
                 if (isSignupRoute) Get.offAndToNamed(AppRoutes.loginRoute);
                 if (Get.currentRoute == AppRoutes.loginRoute) {
-                  Get.offAndToNamed(AppRoutes.homeScreenRoute);
+                  Get.offAndToNamed(AppRoutes.signupRoute);
                 }
               },
               child: RichText(

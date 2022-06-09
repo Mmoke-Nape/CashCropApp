@@ -11,6 +11,9 @@ import '../constants/routes.dart';
 import '../screens/authentication/Login/login_screen.dart';
 import '../screens/authentication/loginSignup/login_signin.dart';
 import '../screens/authentication/veryify email/verify_email.dart';
+import '../screens/onboarding/onboarding_screen_1.dart';
+import '../screens/onboarding/onboarding_screen_2.dart';
+import '../screens/onboarding/onboarding_screen_3.dart';
 
 /// The Widget that configures your application.
 class MyApp extends StatelessWidget {
@@ -70,7 +73,9 @@ class MyApp extends StatelessWidget {
       // Define a function to handle named routes in order to support
       // Flutter web url navigation and deep linking.
 
-      home: const LoginSigninScreen(),
+      home: OnboardingScreen2(),
+
+      // home: const LoginSigninScreen(),
 
       getPages: [
         GetPage(

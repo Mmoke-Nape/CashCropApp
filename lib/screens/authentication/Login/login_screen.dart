@@ -79,7 +79,7 @@ class LoginScreen extends StatelessWidget {
                           .headline2!
                           .copyWith(fontSize: 50),
                     ),
-                    const SizedBox(height: 30),
+                    SizedBox(height: size.height * .02),
                     RichText(
                       textAlign: TextAlign.start,
                       text: const TextSpan(
@@ -97,7 +97,7 @@ class LoginScreen extends StatelessWidget {
                         ],
                       ),
                     ),
-                    const SizedBox(height: 20),
+                    SizedBox(height: size.height * .03),
                     const Text(
                       'Login to continue',
                       style: TextStyle(
@@ -105,7 +105,7 @@ class LoginScreen extends StatelessWidget {
                         color: AppColors.lightGrey,
                       ),
                     ),
-                    const SizedBox(height: 40),
+                    SizedBox(height: size.height * .03),
                     LoginSignupForm()
                   ],
                 ),

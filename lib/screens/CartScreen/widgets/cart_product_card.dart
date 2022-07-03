@@ -5,12 +5,12 @@ import '../controller/cart_controller.dart';
 class CartProductCard extends StatelessWidget {
   const CartProductCard({
     Key? key,
-    required this.controller,
+    // required this.controller,
     required this.product,
     required this.quantity,
     required this.index,
   }) : super(key: key);
-  final CartController controller;
+  // final CartController controller;
   final product;
   final int quantity;
   final int index;
@@ -104,7 +104,7 @@ class CartProductCard extends StatelessWidget {
                     children: [
                       GestureDetector(
                         onTap: () {
-                          controller.removeProduct(product);
+                          //controller.removeProduct(product);
                         },
                         child: Container(
                           height: 35,
@@ -121,7 +121,7 @@ class CartProductCard extends StatelessWidget {
                       ),
                       GestureDetector(
                         onTap: () {
-                          controller.addProduct(product);
+                          //controller.addProduct(product);
                         },
                         child: Container(
                           height: 35,

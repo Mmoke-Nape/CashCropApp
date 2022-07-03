@@ -344,7 +344,7 @@ class DetailsPage extends StatelessWidget {
               ),
               GestureDetector(
                 onTap: () {
-                  cartController.addProduct(product);
+                  cartController.addItemToCart(product);
                 },
                 child: Container(
                   // margin: const EdgeInsets.all(10.0),

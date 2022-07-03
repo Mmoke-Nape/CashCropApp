@@ -13,25 +13,18 @@ import 'components/productItem.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({Key? key}) : super(key: key);
-  
-  Stream<List<Product>> readProducts() => FirebaseFirestore.instance
-      .collection('Products')
-      .snapshots()
-      .map((snapshot) =>
-          snapshot.docs.map((doc) => Product.fromJson(doc.data())).toList());
 
   final CollectionReference _products =
       FirebaseFirestore.instance.collection('Products');
   @override
   Widget build(BuildContext context) {
-
     //Get device width and height
     Size size = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
         backgroundColor: const Color(0xFFF2F2F2),
         //Menu drawer
-        drawer: const  NavBarDrawer(),
+        drawer: const NavBarDrawer(),
         appBar: AppBar(
           toolbarHeight: 70,
           backgroundColor: AppColors.primaryGreen,
@@ -135,7 +128,6 @@ class HomeScreen extends StatelessWidget {
                                   crossAxisSpacing: 10.0,
                                   mainAxisSpacing: 10.0,
                                   mainAxisExtent: size.height * .4),
-
                           itemCount: snapshot.data!.docs.length,
                           itemBuilder: (context, index) {
                             final DocumentSnapshot documentSnapshot =

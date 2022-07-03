@@ -1,3 +1,4 @@
+import 'package:cash_crop/screens/CartScreen/controller/cart_controller.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -14,6 +15,7 @@ class ProductItem extends StatelessWidget {
   final DocumentSnapshot product;
   @override
   Widget build(BuildContext context) {
+    final CartController cartController = CartController();
     Size size = MediaQuery.of(context).size;
     return GestureDetector(
       onTap: () {
@@ -114,20 +116,26 @@ class ProductItem extends StatelessWidget {
                         ]),
                         Align(
                           alignment: Alignment.bottomLeft,
-                          child: Container(
-                            width: 80,
-                            height: 40,
-                            margin: const EdgeInsets.only(right: 0),
-                            decoration: const BoxDecoration(
-                              borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(12),
-                                  bottomRight: Radius.circular(12)),
-                              color: AppColors.primaryGreen,
-                            ),
-                            child: const Center(
-                              child: Icon(
-                                Icons.add_shopping_cart,
-                                color: Colors.white,
+                          child: GestureDetector(
+                            onTap: () {
+                              cartController.addItemToCart(product);
+                              // cartController.addProduct(product);
+                            },
+                            child: Container(
+                              width: 80,
+                              height: 40,
+                              margin: const EdgeInsets.only(right: 0),
+                              decoration: const BoxDecoration(
+                                borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(12),
+                                    bottomRight: Radius.circular(12)),
+                                color: AppColors.primaryGreen,
+                              ),
+                              child: const Center(
+                                child: Icon(
+                                  Icons.add_shopping_cart,
+                                  color: Colors.white,
+                                ),
                               ),
                             ),
                           ),

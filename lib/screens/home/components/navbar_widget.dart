@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -12,6 +13,14 @@ class NavBarDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     final user = FirebaseAuth.instance.currentUser!;
     final Size size = MediaQuery.of(context).size;
+
+    Stream<QuerySnapshot<Map<String, dynamic>>> countCartItems() {
+      return FirebaseFirestore.instance
+          .collection('Cart')
+          .doc(user.uid)
+          .collection('Items')
+          .snapshots();
+    }
 
     const siz = 30.0;
     const fsiz = 15.0;
@@ -51,17 +60,17 @@ class NavBarDrawer extends StatelessWidget {
                     color: Colors.white),
               ),
               accountEmail: Text(user.email.toString()),
-              decoration: BoxDecoration(
-                color: const Color(0xFF0EAE30).withOpacity(0.6),
-                image: DecorationImage(
-                  image: const AssetImage(
-                    "img_assets/grapes.jpeg",
-                  ),
-                  colorFilter: ColorFilter.mode(
-                      const Color(0xFF0EAE30).withOpacity(0.3),
-                      BlendMode.dstATop),
-                ),
-              ),
+              // decoration: BoxDecoration(
+              //   color: const Color(0xFF0EAE30).withOpacity(0.6),
+              //   image: DecorationImage(
+              //     image: const AssetImage(
+              //       "img_assets/grapes.jpeg",
+              //     ),
+              //     colorFilter: ColorFilter.mode(
+              //         const Color(0xFF0EAE30).withOpacity(0.3),
+              //         BlendMode.dstATop),
+              //   ),
+              // ),
             ),
             ListTile(
               leading: const Icon(
@@ -125,17 +134,26 @@ class NavBarDrawer extends StatelessWidget {
               title: const Text("Cart",
                   style: TextStyle(fontSize: fsiz, color: Colors.white)),
               onTap: () => Get.toNamed(AppRoutes.cartScreen),
-              trailing: Container(
-                height: 20,
-                width: 20,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(45),
-                  color: Colors.red,
-                ),
-                child: const Center(
-                    child: Text("8",
-                        style: TextStyle(color: Colors.white, fontSize: 12))),
-              ),
+              trailing: StreamBuilder<QuerySnapshot>(
+                  stream: countCartItems(),
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData) {
+                      return Text(snapshot.data.toString());
+                    } else {
+                      return Icon(Icons.abc);
+                    }
+                  }),
+              // Container(
+              //   height: 20,
+              //   width: 20,
+              //   decoration: BoxDecoration(
+              //     borderRadius: BorderRadius.circular(45),
+              //     color: Colors.red,
+              //   ),
+              //   child: const Center(
+              //       child: Text("8",
+              //           style: TextStyle(color: Colors.white, fontSize: 12))),
+              // ),
             ),
             const Divider(
               color: Colors.white,
